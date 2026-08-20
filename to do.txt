@@ -4,4 +4,4 @@ Large language models (LLMs)
 Automation platforms (such as workflow automation tools)
 CRM systems
 Sales and client communication
-Basic business operations 
+Basic business operations
