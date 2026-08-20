@@ -18,6 +18,4 @@ for key, user in enumerate(my_list):
 
 db.commit()
 
-db.close() 
-
-print("hello from git")
+db.close()
