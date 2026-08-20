@@ -20,4 +20,4 @@ db.commit()
 
 db.close() 
 
-# new shit
+print("hello from git")
