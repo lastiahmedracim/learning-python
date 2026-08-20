@@ -19,3 +19,5 @@ for key, user in enumerate(my_list):
 db.commit()
 
 db.close() 
+
+# new shit
