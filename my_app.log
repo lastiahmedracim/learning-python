@@ -1,0 +1,18 @@
+CRITICAL:root:this is critical message
+root
+2026-08-21 00:43:23,247 root CRITICAL this is critical message
+2026-08-21 00:46:31,264 root CRITICAL hi
+2026-08-21 00:46:31,646 root CRITICAL hi
+2026-08-21 00:46:32,344 root CRITICAL hi
+2026-08-21 00:46:32,682 root CRITICAL hi
+2026-08-21 00:46:33,262 root CRITICAL hi
+2026-08-21 00:47:16,530 root CRITICAL hi
+2026-08-21 00:47:56,369 root CRITICAL 'hi'
+2026-08-21 00:47:56,594 root CRITICAL 'hi'
+2026-08-21 00:49:14,725 root CRITICAL 'hi'
+2026-08-21 00:49:14,725 root ERROR 'hi'
+2026-08-21 00:49:14,726 root WARNING 'hi'
+21 - August - 2026, 00:55:11 root CRITICAL 'by'
+root CRITICAL 'by'
+21 - August - 2026, 00:57:19 root CRITICAL 'by'
+21 - August - 2026, 01:00:07 Racim CRITICAL 'by'
