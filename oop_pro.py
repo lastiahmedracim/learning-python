@@ -2043,32 +2043,2666 @@
 # print(add(10, b=5))
 
 
-from functools import wraps
+# from functools import wraps
 
 
-def retry(func):
+# def retry(func):
 
-    @wraps(func)
-    def wrapper(*args, **kwargs):
+#     @wraps(func)
+#     def wrapper(*args, **kwargs):
 
-        for attempt in range(1, 4):
+#         for attempt in range(1, 4):
 
-            try:
-                result = func(*args, **kwargs)
-                return result
+#             try:
+#                 result = func(*args, **kwargs)
+#                 return result
 
-            except Exception:
-                print(f"Attempt {attempt} failed")
+#             except Exception:
+#                 print(f"Attempt {attempt} failed")
 
-        print("All attempts failed")
+#         print("All attempts failed")
 
-    return wrapper
-
-
-@retry
-def test():
-    print("Trying...")
-    raise ValueError("Something went wrong")
+#     return wrapper
 
 
-test()
+# @retry
+# def test():
+#     print("Trying...")
+#     raise ValueError("Something went wrong")
+
+
+# test()
+
+
+# from functools import wraps
+
+
+# def retry(func):
+
+#     @wraps(func)
+#     def wrapper(*args, **kwargs):
+
+#         for attempt in range(1, 4):
+
+#             try:
+#                 result = func(*args, **kwargs)
+#                 return result
+
+#             except Exception:
+#                 print(f"Attempt {attempt} failed")
+
+#         print("All attempts failed")
+#         return None
+
+#     return wrapper
+
+
+# @retry
+# def divide(a, b):
+#     return a / b
+
+
+# print(divide(10, 2))
+
+# print()
+
+# result = divide(10, 0)
+# print(result)
+
+
+
+
+
+# from functools import wraps
+
+
+# def retry(times):
+
+#     def decorator(func):
+
+#         @wraps(func)
+#         def wrapper(*args, **kwargs):
+
+#             for attempt in range(1, times + 1):
+
+#                 try:
+#                     result = func(*args, **kwargs)
+#                     return result
+
+#                 except Exception:
+#                     print(f"Attempt {attempt} failed")
+
+#             print("All attempts failed")
+#             return None
+
+#         return wrapper
+
+#     return decorator
+
+
+# @retry(5)
+# def divide(a, b):
+#     return a / b
+
+
+# print(divide(10, 2))
+
+# print()
+
+# print(divide(10, 0))
+
+
+
+# from functools import wraps
+
+# def uppercase(func):
+
+#     @wraps(func)
+#     def wrapper(*args, **kwargs):
+
+#         resault = func(*args, **kwargs)
+#         return resault.upper()
+    
+#     return wrapper
+
+# @uppercase
+# def greet(name):
+#     return f"hello {name}"
+
+# print(greet("Hunter"))
+
+
+
+# from functools import wraps
+
+
+# def cache(func):
+
+#     cache_data = {}
+
+#     @wraps(func)
+#     def wrapper(n):
+
+#         if n in cache_data:
+#             return cache_data[n]
+
+#         result = func(n)
+
+#         cache_data[n] = result
+
+#         return result
+
+#     return wrapper
+
+
+# @cache
+# def square(n):
+#     print("Calculating...")
+#     return n * n
+
+
+# print(square(5))
+# print(square(5))
+# print(square(10))
+# print(square(5))
+
+
+
+
+# from functools import wraps
+
+
+# def cache(func):
+
+#     cache_data = {}
+
+#     @wraps(func)
+#     def wrapper(*args):
+
+#         if args in cache_data:
+#             return cache_data[args]
+
+#         result = func(*args)
+
+#         cache_data[args] = result
+
+#         print(cache_data)
+#         return result
+
+#     return wrapper
+
+
+# @cache
+# def add(a, b):
+#     print("Calculating...")
+#     return a + b
+
+# print(add(2, 3))
+# print(add(2, 3))
+# print(add(5, 10))
+# print(add(2, 3))
+
+
+
+
+# from functools import wraps
+
+
+# def cache(func):
+
+#     cache_data = {}
+
+#     @wraps(func)
+#     def wrapper(*args, **kwargs):
+
+#         key = (args, tuple(kwargs.items()))
+#         if key in cache_data:
+#             return cache_data[key]
+            
+#         resault = func(*args, **kwargs)
+#         cache_data[key] = resault
+#         return resault
+
+
+#     return wrapper
+
+
+# @cache
+# def add(a, b):
+#     print("Calculating...")
+#     return a + b
+
+# print(add(2, 3))
+# print(add(2, 3))
+# print(add(5, 10))
+# print(add(2, 3))
+
+
+
+
+
+# class CountDown:
+
+#     def __init__(self, start):
+#         self.current = start
+
+#     def __iter__(self):
+#         return self
+
+#     def __next__(self):
+
+#         if self.current <= 0:
+#             raise StopIteration
+
+#         number = self.current
+#         self.current -= 1
+
+#         return number
+
+
+# counter = CountDown(5)
+
+# for number in counter:
+#     print(number)
+
+
+# class NumberRange:
+#     def __init__(self, start, end):
+#         self.start = start
+#         self.end = end
+
+#     def __iter__(self):
+#         return self
+
+#     def __next__(self):
+
+#         if self.start > self.end:
+#             raise StopIteration
+
+#         number = self.start
+#         self.start += 1
+
+#         return number
+
+# numbers = NumberRange(2, 6)
+
+# for n in numbers:
+#     print(n)
+
+
+# def count_up(start, end):
+
+#     current = start
+
+#     while current <= end:
+#         yield current
+#         current += 1
+
+
+# for number in count_up(1, 5):
+#     print(number)
+
+
+# def even_numbers(start, end):
+
+#     current = start
+
+#     while current <= end:
+#         if current % 2 == 0:
+#             yield current
+#         current += 1
+    
+# for n in even_numbers(1, 10):
+#     print(n)
+
+
+# def squares(a, b):
+
+#     current = a
+
+#     while current <= b:
+#         s = current * current
+#         yield s
+#         current += 1
+        
+
+# for nb in squares(1, 5):
+#     print(nb)
+
+
+# def fibonacci(n):
+
+#     a = 0
+#     b = 1
+
+#     for _ in range(n):
+#         yield a
+
+#         a, b = b, a + b
+
+
+# for number in fibonacci(8):
+#     print(number)
+
+
+# generator = (number ** 2 for number in range(1, 11))
+
+# for number in generator:
+#     print(number)
+
+
+
+# generator = (number ** 2 for number in range(2, 21) if number % 2 == 0)
+
+# for number in generator:
+#     print(number)
+
+# generator = (number ** 2 for number in range (1, 51) if number % 3 == 0)
+
+# for n in generator:
+#     print(n)
+
+# def positive_numbers(numbers):
+
+#     for n in numbers:
+#         if n > 0:
+#             yield n
+
+# numbers = [-5, 10, -2, 7, 0, 3, -8]
+
+# for number in positive_numbers(numbers):
+#     print(number)
+
+
+# def process_numbers(numbers):
+
+#     for number in numbers:
+#         if number % 3 == 0:
+#             yield number ** 2
+
+
+# numbers = [1, 4, 7, 10, 12, 15, 18, 21, 25]
+
+# for number in process_numbers(numbers):
+#     print(number)
+
+# def positive_even_numbers(numbers):
+
+#     for n in numbers:
+#         if n > 0 and n % 2 == 0:
+#             yield n
+
+# numbers = [-10, -4, -2, 0, 2, 4, 7, 8, 11, 12]
+
+# for n in positive_even_numbers(numbers):
+#     print(n)
+
+# def calculator():
+#     total = 0
+
+#     while True:
+#         value = yield total
+#         total += value
+
+
+# calc = calculator()
+
+# next(calc)
+
+# print(calc.send(10))
+# print(calc.send(5))
+# print(calc.send(20))
+
+
+# def average():
+#     total = 0
+#     count = 0
+
+#     while True:
+#         number = yield total / count if count > 0 else 0
+#         total += number
+#         count += 1
+
+
+# avg = average()
+
+# next(avg)
+
+# print(avg.send(10))
+# print(avg.send(20))
+# print(avg.send(30))
+# print(avg.send(40))
+
+# def numbers1():
+#     yield 1
+#     yield 2
+#     yield 3
+
+
+# def numbers2():
+#     yield 4
+#     yield 5
+#     yield 6
+
+
+# def all_numbers():
+#     yield from numbers1()
+#     yield from numbers2()
+
+
+# for number in all_numbers():
+#     print(number)
+
+# def numbers():
+#     number = 1
+
+#     while True:
+#         yield number
+#         number += 1
+
+
+# gen = numbers()
+
+# print(next(gen))
+# print(next(gen))
+# print(next(gen))
+
+# gen.close()
+
+# try:
+#     print(next(gen))
+# except StopIteration:
+#     print("Generator is closed")
+
+
+# def numbers():
+#     n = 1
+#     while True:
+
+#         try:
+#             yield n
+#             n += 1
+#         except ValueError as error:
+#             print(f"error received {error}")
+
+# gen = numbers()
+
+# print(next(gen))
+# print(next(gen))
+
+# print(gen.throw(ValueError("Something went wrong!")))
+
+# def counter():
+#     n = 0
+#     while True:
+#         try:
+#             yield n
+#             n += 1
+#         except ValueError as error:
+#             print(f"counter {error}")
+
+# counter = counter()
+
+# print(next(counter))
+# print(next(counter))
+# print(next(counter))
+
+# counter.throw(ValueError("reset"))
+
+# print(next(counter))
+# print(next(counter))
+
+# def bank_account():
+#     balance = 0
+
+#     while True:
+#         try:
+#             n = yield balance
+#             balance += n
+            
+#         except ValueError as error:
+#             print(f"{error}")
+#             balance = 0
+
+# account = bank_account()
+
+# next(account)
+
+# print(account.send(100))
+# print(account.send(50))
+# print(account.send(-30))
+
+# account.throw(ValueError("Account error"))
+
+# print(account.send(200))
+
+# def numbers():
+#     for number in range(1, 21):
+#         yield number
+
+
+# def even_numbers(numbers):
+#     for number in numbers:
+#         if number % 2 == 0:
+#             yield number
+
+
+# def squares(numbers):
+#     for number in numbers:
+#         yield number ** 2
+
+
+# numbers_generator = numbers()
+# even_generator = even_numbers(numbers_generator)
+# square_generator = squares(even_generator)
+
+# for number in square_generator:
+#     print(number)
+
+
+
+# def numbers():
+#     for number in range(1, 51):
+#         yield number
+
+
+# def divisible_by_3(numbers):
+#     for number in numbers:
+#         if number % 3 == 0:
+#             yield number
+
+
+# def greater_than_20(numbers):
+#     for number in numbers:
+#         if number > 20:
+#             yield number
+
+
+# def squares(numbers):
+#     for number in numbers:
+#         yield number ** 2
+
+
+# numbers_generator = numbers()
+
+# divisible_generator = divisible_by_3(numbers_generator)
+
+# greater_generator = greater_than_20(divisible_generator)
+
+# square_generator = squares(greater_generator)
+
+
+# for number in square_generator:
+#     print(number)
+
+
+
+# class Product:
+#     def __init__(self, name, price, category):
+#         self.name = name
+#         self.price = price
+#         self.category = category
+
+
+# def products():
+#     yield Product("Laptop", 1200, "Electronics")
+#     yield Product("Mouse", 50, "Electronics")
+#     yield Product("Keyboard", 150, "Electronics")
+#     yield Product("Chair", 200, "Furniture")
+#     yield Product("Pen", 10, "Office")
+#     yield Product("Monitor", 300, "Electronics")
+
+
+# def expensive_products(products):
+#     for product in products:
+#         if product.price > 100:
+#             yield product
+
+
+# def product_names(products):
+#     for product in products:
+#         yield product.name
+
+
+# product_generator = products()
+
+# expensive_generator = expensive_products(product_generator)
+
+# name_generator = product_names(expensive_generator)
+
+
+# for name in name_generator:
+#     print(name)
+
+
+# def safe_numbers(data):
+#     for item in data:
+#         try:
+#             if isinstance(item, (int, float)):
+#                 yield item
+#         except TypeError:
+#             pass
+
+
+# data = [10, 20, "hello", 30, "Python", 40, 50]
+
+# for number in safe_numbers(data):
+#     print(number)
+
+
+# class Product:
+#     def __init__(self, name, price):
+#         self.name = name
+#         self.price = price
+
+
+# def products():
+#     yield Product("Laptop", 1200)
+#     yield Product("Mouse", -50)
+#     yield Product("Keyboard", 150)
+#     yield Product("Monitor", -100)
+#     yield Product("Phone", 800)
+
+
+# def valid_products(products):
+#     for product in products:
+#         if isinstance(product.price, (int, float)) and product.price >= 0:
+#             yield product
+
+
+# def product_prices(products):
+#     for product in products:
+#         yield product.price
+
+
+# product_generator = products()
+
+# valid_generator = valid_products(product_generator)
+
+# price_generator = product_prices(valid_generator)
+
+
+# for price in price_generator:
+#     print(price)
+
+
+
+
+# class Product:
+#     def __init__(self, name, price, category):
+#         self.name = name
+#         self.price = price
+#         self.category = category
+
+
+# def products():
+#     yield Product("Laptop", 1200, "Electronics")
+#     yield Product("Mouse", 50, "Electronics")
+#     yield Product("Keyboard", 150, "Electronics")
+#     yield Product("Chair", 200, "Furniture")
+#     yield Product("Phone", 800, "Electronics")
+#     yield Product("Table", 300, "Furniture")
+
+
+# def electronics(products):
+#     for product in products:
+#         if product.category == "Electronics":
+#             yield product
+
+
+# def expensive(products):
+#     for product in products:
+#         if product.price > 100:
+#             yield product
+
+
+# def discounted_prices(products):
+#     for product in products:
+#         yield product.price * 0.90
+
+
+# product_generator = products()
+
+# electronics_generator = electronics(product_generator)
+
+# expensive_generator = expensive(electronics_generator)
+
+# discounted_generator = discounted_prices(expensive_generator)
+
+
+# for price in discounted_generator:
+#     print(price)
+
+
+
+# def price_filter():
+#     minimum_price = 100
+
+#     while True:
+#         price = yield
+
+#         if price >= minimum_price:
+#             yield price
+#         else:
+#             yield None
+
+
+# filter_gen = price_filter()
+
+# next(filter_gen)
+
+# print(filter_gen.send(50))
+# print(filter_gen.send(100))
+# print(filter_gen.send(250))
+# print(filter_gen.send(80))
+
+
+# def counter():
+#     count = 0
+
+#     command = yield count
+
+#     while True:
+#         if command == "add":
+#             count += 1
+
+#         elif command == "remove":
+#             count -= 1
+
+#         elif command == "reset":
+#             count = 0
+
+#         command = yield count
+
+
+# counter_gen = counter()
+
+# next(counter_gen)
+
+# print(counter_gen.send("add"))
+# print(counter_gen.send("add"))
+# print(counter_gen.send("remove"))
+# print(counter_gen.send("add"))
+# print(counter_gen.send("reset"))
+# print(counter_gen.send("hello"))
+
+
+# def bank_account():
+
+#     balance = 0
+#     comande = yield balance
+
+#     while True:
+#         action, amount = comande
+#         if action == "deposit":
+#             balance += amount
+#         elif action == "withdraw":
+#             balance -= amount
+#         elif action == "reset":
+#             balance = 0
+#         else:
+#             balance = 0
+#         comande = yield balance
+
+# account = bank_account()
+
+# next(account)
+
+# print(account.send(("deposit", 100)))
+# print(account.send(("deposit", 50)))
+# print(account.send(("withdraw", 30)))
+# print(account.send(("deposit", 200)))
+# print(account.send(("reset", 0)))
+# print(account.send(("hello", 0)))
+
+
+
+# def numbers():
+#     yield 1
+#     yield 2
+#     yield 3
+#     return "Finished"
+
+# gen = numbers()
+
+# print(next(gen))
+# print(next(gen))
+# print(next(gen))
+
+# try:
+#     next(gen)
+# except StopIteration as error:
+#     print(error.value)
+
+
+# def numbers():
+#     yield 1
+#     yield 2
+#     yield 3
+#     return "numbers finsished"
+
+
+# def main():
+#     resault = yield from numbers()
+#     print(resault)
+#     yield "main finished"
+
+# for value in main():
+#     print(value)
+
+# def fruits():
+#     yield "appel"
+#     yield "banana"
+#     yield "orange"
+
+# def vegetables():
+#     yield "carrot"
+#     yield "tomato"
+#     yield "potato"
+
+# def food():
+#     yield from fruits()
+#     yield from vegetables()
+
+
+# for item in food():
+#     print(item)
+
+
+# def numbers():
+#     c = 1
+#     try:
+#         while True:
+#             yield c
+#             c += 1
+#     finally:
+#         print("Generator cleanup")
+
+# n = numbers()
+# print(next(n))
+# print(next(n))
+# print(next(n))
+# print(next(n))
+
+# n.close()
+
+
+# def worker():
+#     number = 1
+
+#     try:
+#         while True:
+#             try:
+#                 yield number
+#                 number += 1
+
+#             except ValueError:
+#                 print("Error handled")
+
+#     finally:
+#         print("Cleanup done")
+
+
+# gen = worker()
+
+# print(next(gen))
+# print(next(gen))
+
+# gen.throw(ValueError("Something went wrong"))
+
+# gen.close()
+
+
+# def resource_manager():
+#     active = False
+#     try:
+#         value = yield active
+
+#         while True:
+#             if value == "start":
+#                 active = True
+
+#             elif value == "stop":
+#                 active = False
+
+#             elif value == "status":
+#                 pass
+
+#             value = yield active
+
+#     finally:
+#         print("Resource cleaned up")
+    
+# manager = resource_manager()
+
+# next(manager)
+
+# print(manager.send("start"))
+# print(manager.send("status"))
+# print(manager.send("stop"))
+# print(manager.send("status"))
+
+# manager.close()
+
+# def numbers():
+#     for n in range(1, 21):
+#         yield n
+
+# def processor(numbers):
+#     for n in numbers:
+#         if n % 2 == 0:
+#             yield n * 10
+
+# number_generator = numbers()
+# processed_generator = processor(number_generator)
+
+
+# for resault in processed_generator:
+#     print(resault)
+
+
+# class Product:
+#     def __init__(self, name, price):
+#         self.name = name
+#         self.price = price
+
+# def products():
+#     yield Product("laptop", 1200)
+#     yield Product("mouse", 50)
+#     yield Product("keyboard", 150)
+#     yield Product("monitor", 300)
+#     yield Product("phone", 800)
+
+# def expensive_products(products):
+#     for product in products:
+#         if product.price > 100:
+#             yield product
+
+# def product_names(products):
+#     for product in products:
+#         yield product.name
+
+
+# product_generator = products()
+# expensive_generator = expensive_products(product_generator)
+# name_generator = product_names(expensive_generator)
+
+# for name in name_generator:
+#     print(name)
+
+
+
+# class Product:
+#     def __init__(self, name, price):
+#         self.name = name
+#         self.price = price
+
+# def products():
+#     yield Product("laptop", 1200)
+#     yield Product("mouse", 50)
+#     yield Product("keyboard", 150)
+#     yield Product("monitor", 300)
+#     yield Product("phone", 800)
+
+# def expensive_products(products):
+#     for product in products:
+#         if product.price > 100:
+#             yield product
+
+# def discounted_products(products):
+#     for product in products:
+#         product.price = product.price * 0.80
+#         yield product
+
+# def product_info(products):
+#     for product in products:
+#         yield f"{product.name}: ${product.price}"
+
+# p = products()
+# expensive_products_generator = expensive_products(p)
+# discounted_products_generator = discounted_products(expensive_products_generator)
+# products_info_generator = product_info(discounted_products_generator)
+
+# for p in products_info_generator:
+#     print(p)
+
+
+
+
+
+# class Product:
+#     def __init__(self, name, price, category):
+#         self.name = name
+#         self.price = price
+#         self.category = category
+
+# def products():
+#     yield Product("Laptop", 1200, "Electronics")
+#     yield Product("Mouse", 50, "Electronics")
+#     yield Product("Keyboard", 150, "Electronics")
+#     yield Product("Chair", 200, "Furniture")
+#     yield Product("Phone", 800, "Electronics")
+#     yield Product("Table", 300, "Furniture")
+#     yield Product("Pen", 10, "Office")
+
+# def electronics(products):
+#     for product in products:
+#         if product.category == "Electronics":
+#             yield product
+
+# def expensive(products):
+#     for product in products:
+#         if product.price > 100:
+#             yield product
+
+# def product_info(products):
+#     for product in products:
+#         yield f"{product.name} {product.price} {product.category}"
+
+# def total_price(products):
+#     yield sum(product.price for product in products)
+
+# p = products()
+# e = electronics(p)
+# ex = expensive(e)
+# pi = product_info(ex)
+# t = total_price(pi)
+
+# for p in t:
+#     print(p)
+
+# def numbers():
+#     yield 10
+#     yield 20
+#     yield 30
+#     yield 40
+
+# def running_average(numbers):
+#     s = 0
+#     t = 0
+#     for n in numbers:
+#         s += n
+#         t += 1
+#         yield s / t
+
+# nbs = numbers()
+# avg = running_average(nbs)
+
+# for nb in avg:
+#     print(nb)
+
+
+# def calculator():
+#     total = 0
+#     command = yield total
+
+#     while True:
+#         action, amount = command
+
+#         if action == "add":
+#             total += amount
+
+#         elif action == "subtract":
+#             total -= amount
+
+#         elif action == "reset":
+#             total = 0
+
+#         command = yield total
+
+
+# calc = calculator()
+
+# next(calc)
+
+# print(calc.send(("add", 10)))
+# print(calc.send(("add", 20)))
+# print(calc.send(("subtract", 5)))
+# print(calc.send(("add", 100)))
+# print(calc.send(("reset", 0)))
+
+
+# def inventory():
+#     item = 0
+#     command = yield item
+
+#     while True:
+#         action, amount = command
+
+#         if action == "add":
+#             item += amount
+
+#         elif action == "remove":
+#             item -= amount
+
+#         elif action == "reset":
+#             item = 0
+
+#         command = yield item
+
+# stock = inventory()
+
+# next(stock)
+
+# print(stock.send(("add", 10)))
+# print(stock.send(("add", 5)))
+# print(stock.send(("remove", 3)))
+# print(stock.send(("add", 20)))
+# print(stock.send(("remove", 7)))
+
+
+
+# class DatabaseConnection:
+#     def __enter__(self):
+#         print("Database connected")
+#         return self
+
+#     def execute(self, query):
+#         print(f"Executing: {query}")
+
+#     def __exit__(self, exc_type, exc_value, traceback):
+#         print("Database disconnected")
+
+#         if exc_value is not None:
+#             print(f"Error: {exc_value}")
+
+#         return True
+
+
+# with DatabaseConnection() as db:
+#     db.execute("SELECT users")
+#     raise ValueError("Database error")
+
+
+
+# class FileManager:
+#     def __init__(self, filename, mode):
+#         self.filename = filename
+#         self.mode = mode
+#         self.file = None
+
+#     def __enter__(self):
+#         self.file = open(self.filename, self.mode)
+#         return self.file
+
+#     def __exit__(self, exc_type, exc_value, traceback):
+#         self.file.close()
+
+
+# with FileManager("test.txt", "w") as file:
+#     file.write("Hello Python!")
+
+# print(file.closed)
+
+
+
+# import time
+
+
+# class Timer:
+#     def __enter__(self):
+#         self.start = time.perf_counter()
+#         return self
+
+#     def __exit__(self, exc_type, exc_value, traceback):
+#         end = time.perf_counter()
+#         duration = end - self.start
+
+#         print(f"Execution time: {duration:.6f} seconds")
+
+
+# with Timer():
+#     total = 0
+
+#     for number in range(1_000_000):
+#         total += number
+
+# print(total)
+
+
+# from contextlib import contextmanager
+
+# @contextmanager
+# def connection():
+#     print("connected")
+#     yield
+#     print("disconnected")
+
+# with connection():
+#     print("somthing inside")
+
+
+
+# from contextlib import contextmanager
+
+# @contextmanager
+# def database():
+#     print("database connected")
+
+#     var = "MyDatabase"
+#     yield var
+
+#     print("database disconnected")
+
+# with database() as db:
+#     print(db)
+
+
+
+# from contextlib import contextmanager
+
+
+# @contextmanager
+# def database():
+#     print("Database connected")
+
+#     try:
+#         db = "MyDatabase"
+#         yield db
+
+#     except ValueError as error:
+#         print(f"Error: {error}")
+
+#     finally:
+#         print("Database disconnected")
+
+
+# with database() as db:
+#     print(db)
+#     raise ValueError("Connection failed")
+
+
+
+# from contextlib import contextmanager
+
+# @contextmanager
+# def database():
+#     print("database connected")
+
+#     var = "MyDatabase"
+#     yield var
+
+#     print("database disconnected")
+
+# @contextmanager
+# def file_manager():
+#     print("file opened")
+
+#     var = "MyFile"
+#     yield var
+
+#     print("file closed")
+
+
+# with database() as db:
+#     with file_manager() as file:
+#         print(db)
+#         print(file)
+
+
+# from contextlib import contextmanager
+
+
+# @contextmanager
+# def transaction():
+#     print("Transaction started")
+
+#     try:
+#         yield "Transaction"
+
+#     except ValueError as error:
+#         print(f"Transaction rolled back: {error}")
+
+#     else:
+#         print("Transaction committed")
+
+#     finally:
+#         print("Transaction closed")
+
+
+# print("Successful transaction:")
+
+# with transaction() as tx:
+#     print(tx)
+
+
+# print("\nFailed transaction:")
+
+# with transaction() as tx:
+#     print(tx)
+#     raise ValueError("Something went wrong")
+
+
+# from dataclasses import dataclass
+
+
+# @dataclass
+# class Product:
+#     name: str
+#     price: float
+#     category: str
+
+
+# product = Product("Laptop", 1200, "Electronics")
+
+# print(product)
+
+# product2 = Product("Laptop", 1200, "Electronics")
+
+# print(product == product2)
+
+
+
+# from dataclasses import dataclass
+
+# @dataclass
+# class User:
+#     name: str
+#     age: int
+#     active: bool = True
+
+# user1 = User("Hunter", 25)
+# user2 = User("John", 30, False)
+
+# print(user1)
+# print(user2)
+
+
+# from dataclasses import dataclass, field
+
+# @dataclass
+# class Product:
+#     name: str
+#     price: float
+#     tags: list = field(default_factory=list)
+
+# product1 = Product("Laptop", 1200)
+# product2 = Product("Mouse", 50)
+
+# product1.tags.append("electronics")
+
+# print(product1)
+# print(product2)
+
+
+# from dataclasses import dataclass
+
+
+# @dataclass
+# class Product:
+#     name: str
+#     price: float
+#     price_with_tax: float = 0
+
+#     def __post_init__(self):
+#         self.price_with_tax = self.price * 1.20
+
+
+# product = Product("Laptop", 1000)
+
+# print(product)
+
+# from dataclasses import dataclass
+
+# @dataclass
+# class BankAccount:
+#     owner: str
+#     balance: float
+
+#     def __post_init__(self):
+#         if self.balance < 0:
+#             raise ValueError("Balance cannot be negative")
+
+# account1 = BankAccount("Hunter", 1000)
+# print(account1)
+# account2 = BankAccount("John", -500)
+
+
+# from dataclasses import dataclass
+
+
+# @dataclass(frozen=True)
+# class User:
+#     name: str
+#     age: int
+
+
+# user = User("Hunter", 25)
+
+# print(user)
+# print(user.name)
+# print(user.age)
+
+# user.age = 26
+
+
+# from dataclasses import dataclass
+
+
+# @dataclass(frozen=True)
+# class Product:
+#     name: str
+#     price: float
+
+
+# product = Product("Laptop", 1200)
+
+# products = {product}
+
+# print(products)
+
+# product2 = Product("Laptop", 1200)
+
+# print(product == product2)
+# print(product2 in products)
+
+
+
+# from dataclasses import dataclass
+
+
+# @dataclass(frozen=True)
+# class Product:
+#     name: str
+#     price: float
+
+
+# product = Product("Laptop", 1200)
+
+# products = {product}
+
+# print(products)
+
+# product2 = Product("Laptop", 1200)
+
+# print(product == product2)
+# print(product2 in products)
+
+
+
+# from dataclasses import dataclass
+
+
+# @dataclass(order=True)
+# class Product:
+#     name: str
+#     price: float
+
+
+# product1 = Product("Laptop", 1200)
+# product2 = Product("Mouse", 50)
+
+# print(product1 < product2)
+# print(product2 < product1)
+
+# products = [product1, product2]
+
+# products.sort()
+
+# print(products)
+
+
+
+# from dataclasses import dataclass, field
+
+
+# @dataclass(order=True)
+# class Product:
+#     price: float
+#     name: str = field(compare=False)
+#     stock: int = field(compare=False)
+
+
+# product1 = Product(1200, "Laptop", 10)
+# product2 = Product(50, "Mouse", 100)
+
+# print(product1 > product2)
+
+# products = [product1, product2]
+# products.sort()
+
+# print(products)
+
+
+
+
+
+
+
+# def calculate_total(prices: list[int | float]) -> int | float:
+#     return sum(prices)
+
+# print(calculate_total([10, 20, 30]))
+
+
+
+# def get_user_ages(users: dict[str, int]) -> list[int]:
+#     return list(users.values())
+
+
+# users = {
+#     "Alice": 25,
+#     "Bob": 30,
+#     "John": 22
+# }
+
+# print(get_user_ages(users))
+
+
+# def find_user(users: dict[str, int], name: str) -> int | None:
+#     if name in users:
+#         return users[name]
+
+#     return None
+
+
+# users = {
+#     "Alice": 25,
+#     "Bob": 30
+# }
+
+# print(find_user(users, "Alice"))
+# print(find_user(users, "John"))
+
+
+# def find_user(users: dict[str, int], age: int) -> str | None:
+#     for name, user_age in users.items():
+#         if user_age == age:
+#             return name
+
+#     return None
+
+
+# users = {
+#     "Alice": 25,
+#     "Bob": 30
+# }
+
+# print(find_user(users, 25))  # Alice
+# print(find_user(users, 30))  # Bob
+
+
+# def find_product(products: dict[int, str], product_id: int) -> str | None:
+#     if product_id in products:
+#         return products[product_id]
+
+# products = {
+#     101: "Laptop",
+#     102: "Mouse",
+#     103: "Keyboard"
+# }
+
+# print(find_product(products, 102))
+# print(find_product(products, 999))
+
+
+# def get_user_info(user: tuple[str, int, bool]) -> tuple[str, int, bool]:
+#     return user
+
+
+# user = ("Hunter", 25, True)
+
+# print(get_user_info(user))
+
+
+# def calculate_average(numbers: tuple[int | float, ...]) -> float:
+#     return sum(numbers) / len(numbers)
+
+# numbers = (10, 20, 30, 40)
+
+# print(calculate_average(numbers))
+
+
+# from typing import Any
+
+
+# def create_user(**info: Any) -> dict[str, Any]:
+#     return info
+
+
+# user = create_user(
+#     name="Hunter",
+#     age=25,
+#     active=True
+# )
+
+# print(user)
+
+# def calculate_sum(*numbers: int | float) -> float:
+#     return sum(numbers)
+
+
+# print(calculate_sum(10, 20, 5.5))
+
+
+
+# from collections.abc import Callable
+
+
+# def apply_operation(
+#     operation: Callable[[int, int], int],
+#     a: int,
+#     b: int
+# ) -> int:
+#     return operation(a, b)
+
+
+# def multiply(a, b):
+#     return a * b
+
+
+# result = apply_operation(multiply, 5, 4)
+
+# print(result)
+
+
+
+# from collections.abc import Callable
+
+# def execute(operation: callable[[str], str], a: str) -> str:
+#     return operation(a)
+
+# def f(a):
+#     return a.upper()
+
+
+# print(execute(f, "python"))
+
+
+
+
+# from collections.abc import Callable
+
+# def apply_to_numbers(operation: Callable[[int], int], *numbers: int) -> list[int]:
+#     return [operation(number) for number in numbers]
+
+
+# def double(number):
+#     return number * 2
+
+
+# print(apply_to_numbers(double, 1, 2, 3, 4))
+
+
+# from typing import TypeVar
+
+# T = TypeVar("T")
+
+
+# def get_first(items: list[T]) -> T:
+#     return items[0]
+
+
+# print(get_first([10, 20, 30]))
+# print(get_first(["Python", "Java", "C++"]))
+
+
+# from typing import TypeVar
+
+# T = TypeVar("T")
+
+# def first_or_second(first: T, second: T, use_first: bool) -> T:
+#     if use_first == True:
+#         return first
+#     return second
+
+# print(first_or_second(10, 20, True))
+# print(first_or_second("Hello", "World", False))
+
+
+
+# from typing import Generic, TypeVar
+
+# T = TypeVar("T")
+
+
+# class Box(Generic[T]):
+#     def __init__(self, value: T):
+#         self.value = value
+
+#     def get_value(self) -> T:
+#         return self.value
+
+
+# box1 = Box(100)
+# box2 = Box("Python")
+
+# print(box1.get_value())
+# print(box2.get_value())
+
+
+# from typing import Generic, TypeVar
+
+# T = TypeVar("T")
+# U = TypeVar("U")
+
+# class Pair(Generic[T, U]):
+#     def __init__(self, a: T, b: U):
+#         self.a = a
+#         self.b = b
+
+#     def get_first(self) -> T:
+#         return self.a
+    
+#     def get_second(self) -> U:
+#         return self.b
+
+
+# pair1 = Pair("Hunter", 25)
+# pair2 = Pair(100, True)
+
+# print(pair1.get_first())
+# print(pair1.get_second())
+
+# print(pair2.get_first())
+# print(pair2.get_second())
+
+
+# from typing import Generic, TypeVar
+
+# T = TypeVar("T")
+
+# class Storage(Generic[T]):
+#     def __init__(self):
+#         self.items: list[T] = []
+
+#     def add(self, item: T) -> None:
+#         self.items.append(item)
+
+#     def get_all(self) -> list[T]:
+#         return self.items
+
+# numbers = Storage()
+
+# numbers.add(10)
+# numbers.add(20)
+# numbers.add(30)
+
+# words = Storage()
+
+# words.add("Python")
+# words.add("Java")
+
+# print(numbers.get_all())
+# print(words.get_all())
+
+# from typing import Generic, TypeVar
+
+# T = TypeVar("T")
+
+# class Storage(Generic[T]):
+#     def __init__(self):
+#         self.items: list[T]= []
+
+#     def add(self, value: T) -> None:
+#         self.items.append(value)
+
+#     def get(self, index: int) -> T:
+#         return self.items[index]
+
+#     def get_all(self) -> list[T]:
+#         return self.items
+
+# numbers = Storage[int]()
+
+# numbers.add(10)
+# numbers.add(20)
+# numbers.add(30)
+
+# print(numbers.get(1))
+# print(numbers.get_all())
+
+
+# from typing import TypeVar
+
+# T = TypeVar("T")
+# U = TypeVar("U")
+
+# def make_pair(first: T, second: U) -> tuple[T, U]:
+#     return (first, second)
+
+# print(make_pair("Hunter", 25))
+# print(make_pair(100, True))
+
+
+# from typing import TypeVar
+
+# T = TypeVar("T", int, float)
+
+# def double_value(value: T) -> T:
+#     return value * 2
+
+# print(double_value(10))
+# print(double_value(2.5))
+
+
+
+# from typing import Protocol
+
+
+# class HasLength(Protocol):
+#     def __len__(self) -> int:
+#         ...
+
+
+# def get_length(value: HasLength) -> int:
+#     return len(value)
+
+
+# print(get_length("Python"))
+# print(get_length([1, 2, 3]))
+# print(get_length((10, 20)))
+
+
+
+# from typing import Protocol
+
+
+# class Printable(Protocol):
+#     def display(self) -> str:
+#         ...
+
+
+# class User:
+#     def __init__(self, name: str):
+#         self.name = name
+
+#     def display(self) -> str:
+#         return f"User: {self.name}"
+
+
+# class Product:
+#     def __init__(self, name: str):
+#         self.name = name
+
+#     def display(self) -> str:
+#         return f"Product: {self.name}"
+
+
+# def show(item: Printable) -> None:
+#     print(item.display())
+
+
+# user = User("Hunter")
+# product = Product("Laptop")
+
+# show(user)
+# show(product)
+
+
+# from typing import Protocol
+
+
+# class HasName(Protocol):
+#     name: str
+
+
+# class User:
+#     def __init__(self, name: str):
+#         self.name = name
+
+
+# class Product:
+#     def __init__(self, name: str):
+#         self.name = name
+
+
+# def print_name(item: HasName) -> None:
+#     print(f"Name: {item.name}")
+
+
+# user = User("Hunter")
+# product = Product("Laptop")
+
+# print_name(user)
+# print_name(product)
+
+
+# from typing import Protocol
+
+
+# class UserLike(Protocol):
+#     name: str
+
+#     def get_email(self) -> str:
+#         ...
+
+
+# class Admin:
+#     def __init__(self, name: str, email: str):
+#         self.name = name
+#         self.email = email
+
+#     def get_email(self) -> str:
+#         return self.email
+
+
+# class Customer:
+#     def __init__(self, name: str, email: str):
+#         self.name = name
+#         self.email = email
+
+#     def get_email(self) -> str:
+#         return self.email
+
+
+# def show_user(user: UserLike) -> None:
+#     print(f"Name: {user.name}")
+#     print(f"Email: {user.get_email()}")
+
+
+# admin = Admin("Hunter", "hunter@example.com")
+# customer = Customer("Alice", "alice@example.com")
+
+# show_user(admin)
+# show_user(customer)
+
+
+
+
+# from typing import Protocol, runtime_checkable
+
+
+# @runtime_checkable
+# class Playable(Protocol):
+#     name: str
+
+#     def play(self) -> None:
+#         ...
+
+
+# class VideoGame:
+#     def __init__(self, name: str):
+#         self.name = name
+
+#     def play(self) -> None:
+#         print(f"Playing {self.name}")
+
+
+# class Music:
+#     def __init__(self, name: str):
+#         self.name = name
+
+#     def play(self) -> None:
+#         print(f"Playing {self.name}")
+
+
+# class Book:
+#     def __init__(self, name: str):
+#         self.name = name
+
+
+# def check_playable(item: object) -> None:
+#     if isinstance(item, Playable):
+#         print(f"{item.name} is playable")
+#     else:
+#         print(f"{item.name} is not playable")
+
+
+# game = VideoGame("Minecraft")
+# music = Music("Music")
+# book = Book("Python Book")
+
+# check_playable(game)
+# check_playable(music)
+# check_playable(book)
+
+
+# from typing import Protocol, runtime_checkable
+
+
+# @runtime_checkable
+# class Worker(Protocol):
+#     name: str
+
+#     def work(self) -> str:
+#         ...
+
+#     def get_salary(self) -> float:
+#         ...
+
+
+# class Developer:
+#     def __init__(self, name: str, salary: float):
+#         self.name = name
+#         self.salary = salary
+
+#     def work(self) -> str:
+#         return "Writing code"
+
+#     def get_salary(self) -> float:
+#         return self.salary
+
+
+# class Designer:
+#     def __init__(self, name: str, salary: float):
+#         self.name = name
+#         self.salary = salary
+
+#     def work(self) -> str:
+#         return "Designing UI"
+
+#     def get_salary(self) -> float:
+#         return self.salary
+
+
+# class Student:
+#     def __init__(self, name: str):
+#         self.name = name
+
+#     def work(self) -> str:
+#         return "Studying"
+
+
+# def check_worker(person: object) -> None:
+#     if isinstance(person, Worker):
+#         print(f"{person.name} is a worker")
+#         print(f"Work: {person.work()}")
+#         print(f"Salary: {person.get_salary()}")
+#     else:
+#         print(f"{person.name} is not a worker")
+
+
+# developer = Developer("Hunter", 2000.0)
+# designer = Designer("Sarah", 1800.0)
+# student = Student("Alex")
+
+# check_worker(developer)
+# print()
+
+# check_worker(designer)
+# print()
+
+# check_worker(student)
+
+
+# from typing import Protocol, runtime_checkable
+
+# @runtime_checkable
+# class Payable(Protocol):
+#     name: str
+
+#     def pay() -> float:
+#         ...
+
+
+# class Employee:
+#     def __init__ (self, name: str,
+#     salary: float):
+#          self.name = name
+#          self.salary = salary
+
+#     def pay(self) -> float:
+#         return self.salary
+
+
+# class Freelancer:
+#     def __init__ (self, name: str,
+#     amount: float):
+#             self.name = name
+#             self.amount = amount
+
+#     def pay(self) -> float:
+#         return self.amount
+
+# class Student:
+#     def __init__(self, name: str):
+#         self.name = name
+
+
+# def process_payment(person: object) -> None:
+#     if isinstance(person, Protocol):
+#         print(f"{person.name} will recive {person.pay()}")
+#     else:
+#         print(f"{person.name} cannot recive payment")
+
+
+
+# employee = Employee("Hunter", 2500.0)
+# freelancer = Freelancer("Sarah", 1800.0)
+# student = Student("Alex")
+
+# process_payment(employee)
+# process_payment(freelancer)
+# process_payment(student)
+
+
+# from typing import TypedDict
+
+# class ProductData(TypedDict):
+#     name: str
+#     price: float
+#     stock: int
+
+
+# def show_product(product: ProductData) -> None:
+#     print(f"Product: {product["name"]}")
+#     print(f"Price: {product["price"]}")
+#     print(f"Stock: {product["stock"]}")
+
+
+# product1: ProductData = {
+#     "name": "Laptop",
+#     "price": 1200.0,
+#     "stock": 5
+# }
+
+# product2: ProductData = {
+#     "name": "Keyboard",
+#     "price": 80.0,
+#     "stock": 20
+# }
+
+
+# show_product(product1)
+# print()
+# show_product(product2)
+
+
+# from typing import TypedDict, NotRequired
+
+# class UserData(TypedDict):
+#     name: str
+#     email: str
+#     age: int
+#     phone: NotRequired[str]
+
+
+# def show_user(user: UserData) -> None:
+#     print(f"name: {user["name"]}")
+#     print(f"email: {user["email"]}")
+#     print(f"age: {user["age"]}")
+
+#     if "phone" in user:
+#         print(f"Phone: {user['phone']}")
+
+
+# user1: UserData = {
+#     "name": "Hunter",
+#     "email": "hunter@example.com",
+#     "age": 25,
+#     "phone": "0550123456"
+# }
+
+# user2: UserData = {
+#     "name": "Alice",
+#     "email": "alice@example.com",
+#     "age": 30
+# }
+
+
+# show_user(user1)
+
+# print()
+
+# show_user(user2)
+
+
+# from typing import TypedDict, Required, NotRequired
+
+# class ProductData(TypedDict):
+#     id: Required[int]
+#     name: Required[str]
+#     price: Required[float]
+#     description: NotRequired[str]
+#     discount: NotRequired[float]
+
+# def show_product(product: ProductData) -> None:
+#     print(f"{product["id"]}")
+#     print(f"{product["name"]}")
+#     print(f"{product["price"]}")
+
+#     if "description" in product:
+#         print(f"{product["description"]}")
+
+#     if "discount" in product:
+#         print(f"{product["discount"]}")
+
+
+# product1: ProductData = {
+#     "id": 1,
+#     "name": "Laptop",
+#     "price": 1200.0,
+#     "description": "Gaming laptop",
+#     "discount": 10.0
+# }
+
+# product2: ProductData = {
+#     "id": 2,
+#     "name": "Keyboard",
+#     "price": 80.0
+# }
+
+
+# show_product(product1)
+
+# print()
+
+# show_product(product2)
+
+
+# from typing import TypedDict, NotRequired
+
+
+# class Address(TypedDict):
+#     city: str
+#     country: str
+#     zip_code: NotRequired[str]
+
+
+# class UserData(TypedDict):
+#     name: str
+#     email: str
+#     address: Address
+
+
+# def show_user(user: UserData) -> None:
+#     print(f"Name: {user['name']}")
+#     print(f"Email: {user['email']}")
+#     print(f"City: {user['address']['city']}")
+#     print(f"Country: {user['address']['country']}")
+
+#     if "zip_code" in user["address"]:
+#         print(f"Zip code: {user['address']['zip_code']}")
+
+
+# user1: UserData = {
+#     "name": "Hunter",
+#     "email": "hunter@example.com",
+#     "address": {
+#         "city": "Algiers",
+#         "country": "Algeria",
+#         "zip_code": "16000"
+#     }
+# }
+
+
+# user2: UserData = {
+#     "name": "Alice",
+#     "email": "alice@example.com",
+#     "address": {
+#         "city": "Oran",
+#         "country": "Algeria"
+#     }
+# }
+
+
+# show_user(user1)
+
+# print()
+
+# show_user(user2)
+
+# from typing import TypedDict, Required, NotRequired
+
+# class Product(TypedDict):
+#     name: Required[str]
+#     price: Required[float]
+#     discount: NotRequired[float]
+
+
+# class OrderItem(TypedDict):
+#     product: Required[Product]
+#     quantity: Required[int]
+
+
+# class Order(TypedDict):
+#     order_id: Required[int]
+#     customer: Required[str]
+#     items: Required[list[OrderItem]]
+
+
+# def show_order(order: Order) -> None:
+
+
+# from typing import TypedDict, NotRequired
+
+
+# class Product(TypedDict):
+#     name: str
+#     price: float
+#     discount: NotRequired[float]
+
+
+# class OrderItem(TypedDict):
+#     product: Product
+#     quantity: int
+
+
+# class Order(TypedDict):
+#     order_id: int
+#     customer: str
+#     items: list[OrderItem]
+
+
+# def show_order(order: Order) -> None:
+#     print(f"Order ID: {order['order_id']}")
+#     print(f"Customer: {order['customer']}")
+
+#     print("Items:")
+
+#     for item in order["items"]:
+#         product = item["product"]
+
+#         print(f"  Product: {product['name']}")
+#         print(f"  Price: {product['price']}")
+#         print(f"  Quantity: {item['quantity']}")
+
+#         if "discount" in product:
+#             print(f"  Discount: {product['discount']}")
+
+#         print()
+
+
+# order: Order = {
+#     "order_id": 1001,
+#     "customer": "Hunter",
+#     "items": [
+#         {
+#             "product": {
+#                 "name": "Laptop",
+#                 "price": 1200.0,
+#                 "discount": 10.0
+#             },
+#             "quantity": 1
+#         },
+#         {
+#             "product": {
+#                 "name": "Keyboard",
+#                 "price": 80.0
+#             },
+#             "quantity": 2
+#         }
+#     ]
+# }
+
+
+# show_order(order)
+
+
+
+# from typing import Literal
+
+
+# def set_status(status: Literal["online", "offline", "away"]) -> None:
+#     if status == "online":
+#         print("User is online")
+#     elif status == "offline":
+#         print("User is offline")
+#     elif status == "away":
+#         print("User is away")
+
+
+# set_status("online")
+# set_status("offline")
+# set_status("away")
+
+
+# status: Literal["online", "offline", "away"] = "online"
+
+# set_status(status)
+
+
+
+
+# from typing import TypedDict, Literal
+
+
+# class Task(TypedDict):
+#     title: str
+#     status: Literal["pending", "completed", "cancelled"]
+#     priority: Literal["low", "medium", "high"]
+
+
+# def show_task(task: Task) -> None:
+#     print(f"Title: {task['title']}")
+#     print(f"Status: {task['status']}")
+#     print(f"Priority: {task['priority']}")
+
+#     if task["status"] == "pending":
+#         print("Task is waiting")
+#     elif task["status"] == "completed":
+#         print("Task is finished")
+#     elif task["status"] == "cancelled":
+#         print("Task was cancelled")
+
+
+# task1: Task = {
+#     "title": "Learn Python",
+#     "status": "pending",
+#     "priority": "high"
+# }
+
+# task2: Task = {
+#     "title": "Finish project",
+#     "status": "completed",
+#     "priority": "medium"
+# }
+
+
+# show_task(task1)
+
+# print()
+
+# show_task(task2)
+
+
+# from typing import TypedDict, Literal
+
+
+# class Order(TypedDict):
+#     id: int
+#     customer: str
+#     status: Literal["pending", "shipped", "delivered", "cancelled"]
+
+
+# def process_order(order: Order) -> None:
+#     print(f"Order #{order['id']}")
+#     print(f"Customer: {order['customer']}")
+
+#     if order["status"] == "pending":
+#         print("Order is being processed")
+
+#     elif order["status"] == "shipped":
+#         print("Order has been shipped")
+
+#     elif order["status"] == "delivered":
+#         print("Order has been delivered")
+
+#     elif order["status"] == "cancelled":
+#         print("Order was cancelled")
+
+
+# order1: Order = {
+#     "id": 1001,
+#     "customer": "Hunter",
+#     "status": "pending"
+# }
+
+# order2: Order = {
+#     "id": 1002,
+#     "customer": "Alice",
+#     "status": "shipped"
+# }
+
+# order3: Order = {
+#     "id": 1003,
+#     "customer": "Bob",
+#     "status": "delivered"
+# }
+
+
+# process_order(order1)
+
+# print()
+
+# process_order(order2)
+
+# print()
+
+# process_order(order3)
+
+# from typing import Literal
+
+
+# def get_message(
+#     status: Literal["success", "error", "warning"]
+# ) -> str:
+
+#     if status == "success":
+#         return "Operation completed successfully"
+
+#     elif status == "error":
+#         return "Something went wrong"
+
+#     elif status == "warning":
+#         return "Be careful"
+
+
+# print(get_message("success"))
+# print(get_message("error"))
+# print(get_message("warning"))
+
+
+# from typing import Final
+
+
+# MAX_USERS: Final[int] = 100
+# APP_NAME: Final[str] = "MyApp"
+
+
+# def show_limit() -> None:
+#     print(f"Maximum users: {MAX_USERS}")
+#     print(f"App name: {APP_NAME}")
+
+
+# show_limit()
+
+
+
+# from typing import Final
+
+
+# class GameConfig:
+#     MAX_PLAYERS: Final[int] = 4
+#     GAME_NAME: Final[str] = "DMZ"
+
+#     def show_config(self) -> None:
+#         print(f"Maximum players: {self.MAX_PLAYERS}")
+#         print(f"Game name: {self.GAME_NAME}")
+
+
+# game = GameConfig()
+
+# game.show_config()
+
+# print(game.MAX_PLAYERS)
+# print(game.GAME_NAME)
+
+
+# from typing import Self
+
+
+# class User:
+#     def __init__(self, name: str):
+#         self.name = name
+
+#     def rename(self, new_name: str) -> Self:
+#         self.name = new_name
+#         return self
+
+
+# class Admin(User):
+#     def promote(self) -> Self:
+#         print("User promoted to admin")
+#         return self
+
+
+# admin = Admin("Hunter")
+
+# admin.rename("Alex").promote()
+
+# print(admin.name)
+
+
+# from typing import Self
+
+# class Character:
+#     def __init__(self, name: str):
+#         self.name = name
+#         self.level = 1
+#         self.health = 100
+
+#     def set_level(self, level: int) -> Self:
+#         self.level = level
+#         return self
+
+#     def set_health(self, health: int) -> Self:
+#         self.health = health
+#         return self
+
+#     def show(self) ->None:
+#         print(f"name: {self.name}, level: {self.level}, health: {self.health}")
+
+# char1 = Character("Hunter")
+
+# char1.set_level(10).set_health(250).show()
+
+
+
+# from typing import TypeAlias
+
+
+# ProductID: TypeAlias = int
+
+
+# def get_product(product_id: ProductID) -> str:
+#     return f"Product #{product_id}"
+
+
+# product_id: ProductID = 25
+
+# print(get_product(product_id))
+
+
+# from typing import TypeAlias
+
+# UserData: TypeAlias = dict[str, str | int | bool]
+
+# def show_user(user: UserData) -> None:
+#     print(f"name: {user["name"]}")
+#     print(f"age: {user["age"]}")
+#     print(f"status: {user["active"]}")
+
+
+# user: UserData = {
+#     "name": "Hunter",
+#     "age": 25,
+#     "active": True
+# }
+
+# show_user(user)
+
+
+
+
+# from typing import TypeAlias
+
+
+# Position: TypeAlias = tuple[float, float]
+
+
+# def move(position: Position, x: float, y: float) -> Position:
+#     new_x = position[0] + x
+#     new_y = position[1] + y
+
+#     return (new_x, new_y)
+
+
+# position: Position = (100.0, 50.0)
+
+# new_position = move(position, 20.0, 10.0)
+
+# print(new_position)
+
+
