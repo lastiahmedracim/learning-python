@@ -1485,88 +1485,88 @@ import sqlite3
 
 
 
-# @pytest.fixture
-# def connection():
-#     conn = sqlite3.connect(":memory:")
-#     app.create_products_table(conn)
+@pytest.fixture
+def connection():
+    conn = sqlite3.connect(":memory:")
+    app.create_products_table(conn)
 
-#     yield conn
+    yield conn
 
-#     conn.close()
-
-
-# def test_add_valid_product(connection):
-#     product_id = app.add_product(
-#         connection,
-#         "Keyboard",
-#         49.99,
-#     )
-
-#     result = connection.execute(
-#         "SELECT id, name, price FROM products WHERE id = ?",
-#         (product_id,),
-#     ).fetchone()
-
-#     assert result == (product_id, "Keyboard", 49.99)
+    conn.close()
 
 
-# def test_add_two_different_products(connection):
-#     first_id = app.add_product(connection, "Keyboard", 49.99)
-#     second_id = app.add_product(connection, "Mouse", 19.99)
+def test_add_valid_product(connection):
+    product_id = app.add_product(
+        connection,
+        "Keyboard",
+        49.99,
+    )
 
-#     assert first_id != second_id
+    result = connection.execute(
+        "SELECT id, name, price FROM products WHERE id = ?",
+        (product_id,)
+    ).fetchone()
 
-#     result = connection.execute(
-#         "SELECT COUNT(*) FROM products"
-#     ).fetchone()
-
-#     assert result[0] == 2
-
-
-# def test_duplicate_product_name(connection):
-#     app.add_product(connection, "Keyboard", 49.99)
-
-#     with pytest.raises(sqlite3.IntegrityError):
-#         app.add_product(connection, "Keyboard", 59.99)
-
-#     result = connection.execute(
-#         "SELECT COUNT(*) FROM products"
-#     ).fetchone()
-
-#     assert result[0] == 1
+    assert result == (product_id, "Keyboard", 49.99)
 
 
-# @pytest.mark.parametrize("price", [0, -10, -0.01])
-# def test_invalid_price(connection, price):
-#     with pytest.raises(sqlite3.IntegrityError):
-#         app.add_product(connection, "Keyboard", price)
+def test_add_two_different_products(connection):
+    first_id = app.add_product(connection, "Keyboard", 49.99)
+    second_id = app.add_product(connection, "Mouse", 19.99)
 
-#     result = connection.execute(
-#         "SELECT COUNT(*) FROM products"
-#     ).fetchone()
+    assert first_id != second_id
 
-#     assert result[0] == 0
+    result = connection.execute(
+        "SELECT COUNT(*) FROM products"
+    ).fetchone()
 
-
-# def test_missing_name(connection):
-#     with pytest.raises(sqlite3.IntegrityError):
-#         app.add_product(connection, None, 49.99)
-
-#     result = connection.execute(
-#         "SELECT COUNT(*) FROM products"
-#     ).fetchone()
-
-#     assert result[0] == 0
+    assert result[0] == 2
 
 
-# def test_failed_insertion_preserves_existing_product(connection):
-#     app.add_product(connection, "Keyboard", 49.99)
+def test_duplicate_product_name(connection):
+    app.add_product(connection, "Keyboard", 49.99)
 
-#     with pytest.raises(sqlite3.IntegrityError):
-#         app.add_product(connection, "Keyboard", 100)
+    with pytest.raises(sqlite3.IntegrityError):
+        app.add_product(connection, "Keyboard", 59.99)
 
-#     result = connection.execute(
-#         "SELECT name, price FROM products"
-#     ).fetchall()
+    result = connection.execute(
+        "SELECT COUNT(*) FROM products"
+    ).fetchone()
 
-#     assert result == [("Keyboard", 49.99)]
+    assert result[0] == 1
+
+
+@pytest.mark.parametrize("price", [0, -10, -0.01])
+def test_invalid_price(connection, price):
+    with pytest.raises(sqlite3.IntegrityError):
+        app.add_product(connection, "Keyboard", price)
+
+    result = connection.execute(
+        "SELECT COUNT(*) FROM products"
+    ).fetchone()
+
+    assert result[0] == 0
+
+
+def test_missing_name(connection):
+    with pytest.raises(sqlite3.IntegrityError):
+        app.add_product(connection, None, 49.99)
+
+    result = connection.execute(
+        "SELECT COUNT(*) FROM products"
+    ).fetchone()
+
+    assert result[0] == 0
+
+
+def test_failed_insertion_preserves_existing_product(connection):
+    app.add_product(connection, "Keyboard", 49.99)
+
+    with pytest.raises(sqlite3.IntegrityError):
+        app.add_product(connection, "Keyboard", 100)
+
+    result = connection.execute(
+        "SELECT name, price FROM products"
+    ).fetchall()
+
+    assert result == [("Keyboard", 49.99)]

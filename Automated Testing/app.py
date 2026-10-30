@@ -455,7 +455,3 @@ def add_product(connection, name, price):
     )
     connection.commit()
     return cursor.lastrowid
-
-
-
-
